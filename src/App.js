@@ -1,25 +1,125 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { Routes, Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import Login from './components/Login';
+import Register from './components/Register';
+import Home from './containers/Home';
+import history from './helpers/history';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { logout } from './actions/auth';
+import { clearMessage } from './actions/message';
+import '../node_modules/bootstrap/dist/js/bootstrap.min';
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  const { message } = useSelector((state) => state.message);
+  const { user: currentUser } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    history.listen(() => {
+      dispatch(clearMessage());
+    });
+  }, [dispatch]);
+  const logOut = (e) => {
+    e.preventDefault();
+    dispatch(logout()).then(() => {
+      alert('You have successfully logged out');
+      window.location.reload();
+    });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router navigator={history}>
+      <div>
+        <nav className="d-flex justify-content-between navbar navbar-expand-lg navbar-text">
+          <div className="p-3">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarTogglerLeft"
+              aria-controls="navbarToggler"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
+            <div className="navbar-nav mr-auto" id="navbarTogglerLeft">
+              <a href="/" className="navbar-brand">
+                &nbsp;Team Members
+              </a>
+              <li className="nav-item">
+                <Link to="/" className="nav-link">
+                  &nbsp;Home
+                </Link>
+              </li>
+              {currentUser && (
+                <li className="nav-item">
+                  <Link to="/add" className="nav-link">
+                    &nbsp;Add Members
+                  </Link>
+                  {message && (
+                    <span className="alert alert-danger">{message}</span>
+                  )}
+                </li>
+              )}
+              {currentUser && (
+                <li className="nav-item">
+                  <a href="/login" className="nav-link" onClick={logOut}>
+                    &nbsp;Logout
+                  </a>
+                  {message && (
+                    <span className="alert alert-danger">{message}</span>
+                  )}
+                </li>
+              )}
+            </div>
+          </div>
+          <div className="p-3">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarTogglerRight"
+              aria-controls="navbarToggler"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
+            <div className="navbar-nav mr-auto" id="navbarTogglerRight">
+              {!currentUser && (
+                <li className="nav-item">
+                  <Link to="/signup" className="nav-link">
+                    &nbsp;Register
+                  </Link>
+                </li>
+              )}
+
+              {!currentUser && (
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">
+                    &nbsp;Login
+                  </Link>
+                  {message && (
+                    <span className="alert alert-danger">{message}</span>
+                  )}
+                </li>
+              )}
+            </div>
+          </div>
+        </nav>
+
+        <div className="container mt-3">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Register />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
