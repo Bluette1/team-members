@@ -5,6 +5,7 @@ import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 import AuthService from '../services/auth.service';
+import registerMembers from '../actions/member';
 import { loginSuccess, loginFail } from '../actions/auth';
 import { setMessage } from '../actions/message';
 import soccerIcon from '../public/images/man-silhouette-playing-soccer-svgrepo-com.svg';
@@ -58,6 +59,8 @@ const Login = () => {
           .then((response) => {
             const user = response.data;
             localStorage.setItem('user', JSON.stringify(user));
+
+            dispatch(registerMembers(user.members));
 
             dispatch(loginSuccess(user));
 
