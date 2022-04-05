@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
-
 *,
 *::before,
 *::after {
@@ -28,4 +27,10 @@ nav {
 
 a {
   color: rgb(0, 0, 0);
+}
+
+td {
+  flex-basis: 250px;
+  height: 60px;
+  /* stylelint-disable-next-line no-missing-end-of-source-newline */
 }

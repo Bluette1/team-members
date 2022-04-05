@@ -48,26 +48,11 @@ const App = () => {
               <a href="/" className="navbar-brand">
                 &nbsp;Team Members
               </a>
-              <li className="nav-item">
-                <Link to="/" className="nav-link">
-                  &nbsp;Home
-                </Link>
-              </li>
               {currentUser && (
                 <li className="nav-item">
                   <Link to="/add" className="nav-link">
                     &nbsp;Add Members
                   </Link>
-                  {message && (
-                    <span className="alert alert-danger">{message}</span>
-                  )}
-                </li>
-              )}
-              {currentUser && (
-                <li className="nav-item">
-                  <a href="/login" className="nav-link" onClick={logOut}>
-                    &nbsp;Logout
-                  </a>
                   {message && (
                     <span className="alert alert-danger">{message}</span>
                   )}
@@ -101,6 +86,16 @@ const App = () => {
                   <Link to="/login" className="nav-link">
                     &nbsp;Login
                   </Link>
+                  {message && (
+                    <span className="alert alert-danger">{message}</span>
+                  )}
+                </li>
+              )}
+              {currentUser && (
+                <li className="nav-item">
+                  <a href="/login" className="nav-link" onClick={logOut}>
+                    &nbsp;Logout
+                  </a>
                   {message && (
                     <span className="alert alert-danger">{message}</span>
                   )}

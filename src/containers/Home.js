@@ -13,27 +13,26 @@ const Home = () => {
   const { members } = currentUser;
 
   return (
-    <div className="container row d-flex">
+    <div>
       <table style={{ width: '100%' }}>
         <thead>
-          <tr>
-            <th className="member-name">Name</th>
-            <th className="member-company">Company</th>
-            <th className="member-status"> Status</th>
-            <th className="member-last-updated">Last Updated</th>
-            <th className="member-notes"> Notes</th>
-            <th className="member-remove">&nbsp;</th>
+          <tr className="d-flex">
+            <td className="member-name">Name</td>
+            <td className="member-company">Company</td>
+            <td className="member-status"> Status</td>
+            <td className="member-last-updated">Last Updated</td>
+            <td className="member-notes"> Notes</td>
+            <td className="member-remove">&nbsp;</td>
           </tr>
         </thead>
 
         <tbody>
           {members && members.length > 0 ? (
-            <div className="row d-flex">
-              {' '}
+            <>
               {members.map((member) => (
-                <Member key={`member-${uuid()}`} member={member} />
+                <Member key={`member-${uuid()}`} item={member} />
               ))}
-            </div>
+            </>
           ) : null}
         </tbody>
       </table>
