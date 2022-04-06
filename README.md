@@ -25,7 +25,7 @@ Users are able to:
 
 ### Screenshot
 
-![](./public/images/screenshot.jpg)
+![](./public/images/screenshot.png)
 
 ### Links
 

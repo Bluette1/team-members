@@ -4,6 +4,7 @@ import uuid from 'react-uuid';
 import { Navigate } from 'react-router-dom';
 import Member from '../components/MemberItem';
 import StatusSort from '../components/StatusSort';
+import CompanyFilter from '../components/CompanyFilter';
 
 const Home = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
@@ -13,8 +14,15 @@ const Home = () => {
   }
   const { members } = currentUser;
   const { sortorder: status } = useSelector((state) => state.sortorder);
+  const { filter: company } = useSelector((state) => state.filter);
+  let filteredMembers = members;
+  if (company !== '') {
+    filteredMembers = filteredMembers.filter(
+      (member) => member.company.toLowerCase() === company.toLowerCase(),
+    );
+  }
 
-  const sortedMembers = JSON.parse(JSON.stringify(members));
+  const sortedMembers = JSON.parse(JSON.stringify(filteredMembers));
 
   if (status !== '') {
     if (status === 'ASC') {
@@ -26,7 +34,10 @@ const Home = () => {
 
   return (
     <div>
-      <StatusSort />
+      <div className="d-flex">
+        <CompanyFilter />
+        <StatusSort />
+      </div>
       <table style={{ width: '100%' }}>
         <thead>
           <tr className="d-flex">

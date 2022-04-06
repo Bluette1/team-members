@@ -10,7 +10,6 @@ import './App.css';
 import { logout } from './actions/auth';
 import { clearMessage } from './actions/message';
 import '../node_modules/bootstrap/dist/js/bootstrap.min';
-import styles from './Button.module.css';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -52,7 +51,7 @@ const App = () => {
               {currentUser && (
                 <li className="nav-item">
                   &nbsp;
-                  <button type="button" style={styles.button}>
+                  <button type="button" className="navbtn">
                     Add Members
                     <i className="fa fa-plus p-2" aria-hidden="true" />
                   </button>

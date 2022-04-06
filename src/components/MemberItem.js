@@ -30,8 +30,10 @@ const MemberItem = ({ item }) => {
     </tr>
   );
 };
-/* eslint-disable */
+
 MemberItem.propTypes = {
+  /* eslint-disable */
   item: PropTypes.objectOf(PropTypes.any).isRequired,
+  /* eslint-enable */
 };
 export default MemberItem;
