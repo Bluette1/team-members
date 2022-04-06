@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import uuid from 'react-uuid';
 import { Navigate } from 'react-router-dom';
 import Member from '../components/MemberItem';
-import StatusFilter from '../components/StatusFilter';
+import StatusSort from '../components/StatusSort';
 
 const Home = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
@@ -12,15 +12,21 @@ const Home = () => {
     return <Navigate to="/login" />;
   }
   const { members } = currentUser;
-  const { filter: status } = useSelector((state) => state.filter);
-  let filteredMembers = members;
+  const { sortorder: status } = useSelector((state) => state.sortorder);
+
+  const sortedMembers = JSON.parse(JSON.stringify(members));
+
   if (status !== '') {
-    filteredMembers = members.filter((member) => member.status === status);
+    if (status === 'ASC') {
+      sortedMembers.sort((a, b) => a.status.localeCompare(b.status));
+    } else {
+      sortedMembers.sort((a, b) => a.status.localeCompare(b.status)).reverse();
+    }
   }
 
   return (
     <div>
-      <StatusFilter />
+      <StatusSort />
       <table style={{ width: '100%' }}>
         <thead>
           <tr className="d-flex">
@@ -34,9 +40,9 @@ const Home = () => {
         </thead>
 
         <tbody>
-          {filteredMembers && filteredMembers.length > 0 ? (
+          {sortedMembers && sortedMembers.length > 0 ? (
             <>
-              {filteredMembers.map((member) => (
+              {sortedMembers.map((member) => (
                 <Member key={`member-${uuid()}`} item={member} />
               ))}
             </>

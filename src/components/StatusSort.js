@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
-import changeFilter from '../actions/filter';
+// import changeFilter from '../actions/filter';
+import changeSortOrder from '../actions/sortorder';
 
-const StatusFilter = () => {
-  const { filter: status } = useSelector((state) => state.filter);
+const StatusSort = () => {
+  const { sortorder: status } = useSelector((state) => state.sortorder);
   const dispatch = useDispatch();
-  let statuses = ['Active', 'Closed'];
+  let statuses = ['ASC', 'DESC'];
   if (status) {
     statuses = statuses.filter(
       (item) => item.toLowerCase() !== status.toLowerCase(),
@@ -15,7 +16,7 @@ const StatusFilter = () => {
     const {
       target: { value },
     } = event;
-    dispatch(changeFilter(value));
+    dispatch(changeSortOrder(value));
   };
 
   return (
@@ -33,7 +34,7 @@ const StatusFilter = () => {
           <option className="current-option" value={'' || status}>
             {status || 'Status'}
           </option>
-          <option value="">All</option>
+          <option value="">Unsorted</option>
           {statuses.map((item) => (
             <option key={`status-${uuid()}`} value={item}>
               {item}
@@ -45,4 +46,4 @@ const StatusFilter = () => {
   );
 };
 
-export default StatusFilter;
+export default StatusSort;
