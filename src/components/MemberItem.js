@@ -12,14 +12,21 @@ const MemberItem = ({ item }) => {
   return (
     <tr className="d-flex">
       <td>
-        <input type="checkbox" name="select-member" id="select-member" />
+        <input
+          className="mx-2"
+          type="checkbox"
+          name="select-member"
+          id="select-member"
+        />
         {name}
       </td>
       <td>{company}</td>
       <td>{status}</td>
       <td>{moment(dateUpdated).format('DD/MM/YYYY')}</td>
       <td>{notes}</td>
-      <td>delete</td>
+      <td>
+        <i className="fa fa-trash" aria-hidden="true" />
+      </td>
     </tr>
   );
 };

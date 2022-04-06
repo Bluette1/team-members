@@ -10,6 +10,7 @@ import './App.css';
 import { logout } from './actions/auth';
 import { clearMessage } from './actions/message';
 import '../node_modules/bootstrap/dist/js/bootstrap.min';
+import styles from './Button.module.css';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -50,9 +51,11 @@ const App = () => {
               </a>
               {currentUser && (
                 <li className="nav-item">
-                  <Link to="/add" className="nav-link">
-                    &nbsp;Add Members
-                  </Link>
+                  &nbsp;
+                  <button type="button" style={styles.button}>
+                    Add Members
+                    <i className="fa fa-plus p-2" aria-hidden="true" />
+                  </button>
                   {message && (
                     <span className="alert alert-danger">{message}</span>
                   )}

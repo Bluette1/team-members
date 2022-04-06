@@ -7,3 +7,4 @@ export const SET_MESSAGE = 'SET_MESSAGE';
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 export const REGISTER_MEMBERS = 'REGISTER_MEMBERS';
 export const REMOVE_MEMBER = 'REMOVE_MEMBER';
+export const CHANGE_FILTER = 'CHANGE_FILTER';
