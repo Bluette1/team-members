@@ -1,20 +1,22 @@
 import http from '../http-common';
 import authHeader from './auth.header';
 
-const headers = authHeader();
+const createMember = (data, headers = authHeader()) =>
+  http.post('/members', data, { headers });
 
-const createMember = (data) => http.post('/members', data, { headers });
+const getMembers = (headers = authHeader()) =>
+  http.get('/members', { headers });
 
-const getMembers = () => http.get('/members', { headers });
+const getMembersByUser = (id, headers = authHeader()) =>
+  http.get(`/users/${id}/members`, { headers });
 
-const getMembersByUser = (id) => http.get(`/users/${id}/members`, { headers });
+const getMember = (id, headers = authHeader()) =>
+  http.post(`/members/${id}`, { headers });
 
-const getMember = (id) => http.post(`/members/${id}`, { headers });
-
-const updateMember = (id, data) =>
+const updateMember = (id, data, headers = authHeader()) =>
   http.put(`/members/${id}`, data, { headers });
 
-const deleteMember = (id, data) =>
+const deleteMember = (id, data, headers = authHeader()) =>
   http.put(`/members/${id}`, data, { headers });
 
 export default {

@@ -12,7 +12,8 @@ const Home = () => {
   if (!currentUser) {
     return <Navigate to="/login" />;
   }
-  const { members } = currentUser;
+  const members = useSelector((state) => state.member);
+
   const { sortorder: status } = useSelector((state) => state.sortorder);
   const { filter: company } = useSelector((state) => state.filter);
   let filteredMembers = members;

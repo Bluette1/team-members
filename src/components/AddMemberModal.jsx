@@ -7,6 +7,7 @@ import CheckButton from 'react-validation/build/button';
 import MemberService from '../services/member.service';
 import { addMember } from '../actions/member';
 import showMemberModal from '../actions/membermodal';
+import authHeader from '../services/auth.header';
 
 import { setMessage } from '../actions/message';
 
@@ -32,6 +33,7 @@ const AddMemberModal = () => {
   const [loading, setLoading] = useState(false);
 
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector((state) => state.auth);
   const { message } = useSelector((state) => state.message);
 
   const dispatch = useDispatch();
@@ -72,7 +74,8 @@ const AddMemberModal = () => {
 
     if (checkBtn.current.context._errors.length === 0) {
       try {
-        MemberService.createMember({ name, company, status, notes })
+        const headers = authHeader(currentUser);
+        MemberService.createMember({ name, company, status, notes }, headers)
           .then((response) => {
             const member = response.data;
             dispatch(addMember(member));

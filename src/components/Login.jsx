@@ -65,7 +65,6 @@ const Login = () => {
             dispatch(loginSuccess(user));
 
             history('/');
-            window.location.reload();
           })
           .catch((error) => {
             const message =
