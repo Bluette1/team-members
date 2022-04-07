@@ -1,13 +1,17 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
 import { Navigate } from 'react-router-dom';
 import Member from '../components/MemberItem';
 import StatusSort from '../components/StatusSort';
+import registerMembers from '../actions/member';
 import CompanyFilter from '../components/CompanyFilter';
+import MemberService from '../services/member.service';
 
 const Home = () => {
+  const [errDisplay, setErrDisplay] = useState('');
   const { user: currentUser } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   if (!currentUser) {
     return <Navigate to="/login" />;
@@ -31,6 +35,35 @@ const Home = () => {
     } else {
       sortedMembers.sort((a, b) => a.status.localeCompare(b.status)).reverse();
     }
+  }
+
+  useEffect(() => {
+    if (members.length === 0) {
+      try {
+        MemberService.getMembersByUser(currentUser.id)
+          .then((response) => {
+            dispatch(registerMembers(response.data));
+          })
+          .catch((error) => {
+            const errorContent =
+              (error.response && error.response.data) ||
+              error.message ||
+              error.toString();
+            setErrDisplay(JSON.stringify(errorContent));
+          });
+      } catch (error) {
+        const errorContent =
+          (error.response && error.response.data) ||
+          error.message ||
+          error.toString();
+        setErrDisplay(JSON.stringify(errorContent));
+      }
+    }
+  }, [members]);
+
+  if (errDisplay !== '') {
+    console.log(errDisplay);
+    return null;
   }
 
   return (
