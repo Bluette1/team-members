@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
-// import changeFilter from '../actions/filter';
 import changeSortOrder from '../actions/sortorder';
 
 const StatusSort = () => {

@@ -21,7 +21,8 @@ Users are able to:
 - Register an account and login
 - See a list of soccer team members on the home page
 - Add and delete team members
-- Filter team members according to company and status
+- Sort team members by status
+- Filter team members according to company
 
 ### Screenshot
 

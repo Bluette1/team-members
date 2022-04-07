@@ -3,17 +3,20 @@ import { Routes, Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Login from './components/Login';
 import Register from './components/Register';
+import AddMemberModal from './components/AddMemberModal';
 import Home from './containers/Home';
 import history from './helpers/history';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { logout } from './actions/auth';
+import showMemberModal from './actions/membermodal';
 import { clearMessage } from './actions/message';
 import '../node_modules/bootstrap/dist/js/bootstrap.min';
 
 const App = () => {
   const dispatch = useDispatch();
   const { message } = useSelector((state) => state.message);
+  const { showAddMemberModal } = useSelector((state) => state.membermodal);
   const { user: currentUser } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -28,9 +31,15 @@ const App = () => {
       window.location.reload();
     });
   };
+  const handleAddMembers = (e) => {
+    e.preventDefault();
+    dispatch(showMemberModal({ flag: true }));
+    const body = document.getElementsByClassName('main')[0];
+    body.classList.add('add-member');
+  };
   return (
     <Router navigator={history}>
-      <div>
+      <div className="main">
         <nav className="d-flex justify-content-between navbar navbar-expand-lg navbar-text">
           <div className="p-3">
             <button
@@ -51,7 +60,11 @@ const App = () => {
               {currentUser && (
                 <li className="nav-item">
                   &nbsp;
-                  <button type="button" className="navbtn">
+                  <button
+                    type="button"
+                    className="navbtn"
+                    onClick={handleAddMembers}
+                  >
                     Add Members
                     <i className="fa fa-plus p-2" aria-hidden="true" />
                   </button>
@@ -115,6 +128,8 @@ const App = () => {
           </Routes>
         </div>
       </div>
+      {showAddMemberModal && <AddMemberModal />}
+      <div />
     </Router>
   );
 };

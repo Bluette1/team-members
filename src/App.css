@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
-
 *,
 *::before,
 *::after {
@@ -16,6 +15,10 @@
 
 body {
   font-family: 'Alfa Slab One', cursive;
+}
+
+.main {
+  height: 800px;
 }
 
 nav {
@@ -86,7 +89,8 @@ td {
   display: block;
 }
 
-.navbtn {
+.navbtn,
+.modal-btn {
   width: 12.5rem;
   height: 2.5rem;
   line-height: 1.688rem;
@@ -96,4 +100,36 @@ td {
   cursor: pointer;
   margin-left: 20px;
   color: rgb(255, 255, 255);
+}
+
+.cancel-btn {
+  border: 1px solid rgb(12, 120, 228);
+  background-color: rgb(255, 255, 255);
+  color: rgb(12, 120, 228);
+}
+
+.add-member-modal {
+  background: rgb(255, 255, 255);
+  /* border: #5357b6 1px solid; */
+  position: fixed;
+  /* min-height: fit-content; */
+  height: 30.75em;
+  /* width: 40%; */
+  min-width: fit-content;
+  right: 5%;
+  left: 5%;
+  bottom: 10%;
+  /* padding: 3%; */
+}
+
+.add-member {
+  background: rgb(0, 0, 0);
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
+
+textarea {
+  border: solid 1px rgb(225, 222, 222);
+  width: 100%;
+  padding-left: 2%;
 }
