@@ -16,8 +16,8 @@ const getMember = (id, headers = authHeader()) =>
 const updateMember = (id, data, headers = authHeader()) =>
   http.put(`/members/${id}`, data, { headers });
 
-const deleteMember = (id, data, headers = authHeader()) =>
-  http.put(`/members/${id}`, data, { headers });
+const deleteMember = (id, headers = authHeader()) =>
+  http.delete(`/members/${id}`, { headers });
 
 export default {
   createMember,
