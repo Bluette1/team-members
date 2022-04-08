@@ -7,7 +7,7 @@ import CheckButton from 'react-validation/build/button';
 import AuthService from '../services/auth.service';
 import registerMembers from '../actions/member';
 import { loginSuccess, loginFail } from '../actions/auth';
-import { setMessage } from '../actions/message';
+import { setMessage, clearMessage } from '../actions/message';
 import soccerIcon from '../public/images/man-silhouette-playing-soccer-svgrepo-com.svg';
 import styles from '../SoccerIcon.module.css';
 
@@ -34,7 +34,7 @@ const Login = () => {
   const { message } = useSelector((state) => state.message);
 
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const onChangeUsername = (e) => {
     const username = e.target.value;
@@ -59,12 +59,12 @@ const Login = () => {
           .then((response) => {
             const user = response.data;
             localStorage.setItem('user', JSON.stringify(user));
+            dispatch(clearMessage());
 
             dispatch(registerMembers(user.members));
-
             dispatch(loginSuccess(user));
 
-            history('/');
+            navigate('/');
           })
           .catch((error) => {
             const message =

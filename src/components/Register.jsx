@@ -5,8 +5,9 @@ import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 import AuthService from '../services/auth.service';
-import { registerSuccess, registerFail } from '../actions/auth';
-import { setMessage } from '../actions/message';
+import { loginSuccess, registerFail } from '../actions/auth';
+import registerMembers from '../actions/member';
+import { setMessage, clearMessage } from '../actions/message';
 import soccerIcon from '../public/images/man-silhouette-playing-soccer-svgrepo-com.svg';
 
 const required = (value) => {
@@ -33,7 +34,7 @@ const Register = () => {
   const { message } = useSelector((state) => state.message);
 
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const onChangeUsername = (e) => {
     const username = e.target.value;
@@ -59,11 +60,17 @@ const Register = () => {
 
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.register({ username, email, password })
-        .then(() => {
-          dispatch(registerSuccess());
-          dispatch(setMessage('You have successfully registered'));
-          history('/login');
-          window.location.reload();
+        .then((response) => {
+          const user = response.data;
+          localStorage.setItem('user', JSON.stringify(user));
+
+          dispatch(registerMembers(user.members));
+
+          dispatch(loginSuccess(user));
+
+          dispatch(clearMessage());
+
+          navigate('/');
         })
         .catch((error) => {
           const message =

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Routes, Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Login from './components/Login';
@@ -10,7 +10,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { logout } from './actions/auth';
 import showMemberModal from './actions/membermodal';
-import { clearMessage } from './actions/message';
 import '../node_modules/bootstrap/dist/js/bootstrap.min';
 
 const App = () => {
@@ -19,11 +18,6 @@ const App = () => {
   const { showAddMemberModal } = useSelector((state) => state.membermodal);
   const { user: currentUser } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    history.listen(() => {
-      dispatch(clearMessage());
-    });
-  }, [dispatch]);
   const logOut = (e) => {
     e.preventDefault();
     dispatch(logout()).then(() => {
