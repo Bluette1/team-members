@@ -85,8 +85,12 @@ const Home = () => {
         <tbody>
           {sortedMembers && sortedMembers.length > 0 ? (
             <>
-              {sortedMembers.map((member) => (
-                <Member key={`member-${uuid()}`} item={member} />
+              {sortedMembers.map((member, idx) => (
+                <Member
+                  key={`member-${uuid()}`}
+                  item={member}
+                  highlight={idx % 2 === 0}
+                />
               ))}
             </>
           ) : null}

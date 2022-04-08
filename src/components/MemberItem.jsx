@@ -2,12 +2,13 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import cx from 'classnames';
 import MemberService from '../services/member.service';
 import { removeMember } from '../actions/member';
 import { setMessage } from '../actions/message';
 import authHeader from '../services/auth.header';
 
-const MemberItem = ({ item }) => {
+const MemberItem = ({ item, highlight }) => {
   const { id, name, company, status, updatedAt, notes, createdAt } = item;
   let dateUpdated = createdAt;
   if (updatedAt) {
@@ -48,7 +49,7 @@ const MemberItem = ({ item }) => {
   };
 
   return (
-    <tr className="d-flex">
+    <tr className={(cx('d-flex'), highlight && 'highlighted')}>
       <td>
         <input
           className="mx-2"
@@ -63,7 +64,11 @@ const MemberItem = ({ item }) => {
       <td>{moment(dateUpdated).format('DD/MM/YYYY')}</td>
       <td>{notes}</td>
       <td>
-        <i onClick={handleRemove} className="fa fa-trash" aria-hidden="true" />
+        <i
+          onClick={handleRemove}
+          className="fa fa-trash mx-2"
+          aria-hidden="true"
+        />
       </td>
     </tr>
   );
@@ -72,6 +77,7 @@ const MemberItem = ({ item }) => {
 MemberItem.propTypes = {
   /* eslint-disable */
   item: PropTypes.objectOf(PropTypes.any).isRequired,
+  highlight: PropTypes.bool,
   /* eslint-enable */
 };
 export default MemberItem;

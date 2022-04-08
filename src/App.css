@@ -132,6 +132,10 @@ textarea {
   padding-left: 2%;
 }
 
+.highlighted {
+  background-color: rgb(245, 242, 242);
+}
+
 @media (max-width: 500px) {
   .main {
     min-width: 500px;
