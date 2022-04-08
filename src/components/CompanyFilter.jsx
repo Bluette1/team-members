@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import changeFilter from '../actions/filter';
 import downArrow from '../public/images/down-arrow-svgrepo-com.svg';
 
 const CompanyFilter = () => {
-  const [selected, setSelected] = useState([]);
+  const initial = useSelector((state) => state.filter);
+  const [selected, setSelected] = useState(initial);
   const [companies, setCompanies] = useState(0);
-  const [all, setAll] = useState(false);
+  const [all, setAll] = useState(true);
+  const dispatch = useDispatch();
+
   const handleClick = () => {
     document.getElementById('customDropdown').classList.toggle('show');
   };
 
   useEffect(() => {
-    console.log('Selected: ', selected);
     setCompanies(selected.length);
     const checkboxes = document.getElementsByClassName('checkbox');
     if (selected.includes('All')) {
-      console.log('checkboxes: ', checkboxes);
       const updatedSelected = [];
       for (let i = 0; i < checkboxes.length; i += 1) {
         checkboxes[i].checked = true;
@@ -26,6 +28,7 @@ const CompanyFilter = () => {
       setSelected(updatedSelected);
       setAll(true);
     }
+    dispatch(changeFilter(selected));
   }, [selected]);
 
   const handleSelect = (e) => {

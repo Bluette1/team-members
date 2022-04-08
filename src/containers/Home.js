@@ -19,14 +19,12 @@ const Home = () => {
   const members = useSelector((state) => state.member);
 
   const { sortorder: status } = useSelector((state) => state.sortorder);
-  const { filter: company } = useSelector((state) => state.filter);
+  const company = useSelector((state) => state.filter);
   let filteredMembers = members;
-  if (company !== '') {
-    filteredMembers = filteredMembers.filter(
-      (member) => member.company.toLowerCase() === company.toLowerCase(),
-    );
-  }
 
+  filteredMembers = filteredMembers.filter((member) =>
+    company.includes(member.company),
+  );
   const sortedMembers = JSON.parse(JSON.stringify(filteredMembers));
 
   if (status !== '') {
