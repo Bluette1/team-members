@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import uuid from 'react-uuid';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
+import Select from 'react-validation/build/select';
 import CheckButton from 'react-validation/build/button';
 import MemberService from '../services/member.service';
 import { addMember } from '../actions/member';
@@ -37,6 +39,13 @@ const AddMemberModal = () => {
   const { message } = useSelector((state) => state.message);
 
   const dispatch = useDispatch();
+  const companies = [
+    'LA Galaxy',
+    'Manchester United',
+    'DC United',
+    'Liverpool',
+    'Bayern Munich',
+  ];
 
   const onChangeName = (e) => {
     const name = e.target.value;
@@ -137,14 +146,22 @@ const AddMemberModal = () => {
 
             <div className="form-group">
               <p>Company</p>
-              <Input
-                type="text"
-                className="form-control"
-                name="company"
-                value={company}
+              <Select
+                name="company-select"
+                id="companies-select"
                 onChange={onChangeCompany}
-                validations={[required]}
-              />
+              >
+                <option value="">--Please choose a company--</option>
+                {companies.map((item) => (
+                  <option
+                    value={item}
+                    key={`company-${uuid()}`}
+                    validations={[required]}
+                  >
+                    {item}
+                  </option>
+                ))}
+              </Select>
             </div>
 
             <div className="form-group">
