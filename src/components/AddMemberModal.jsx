@@ -125,11 +125,11 @@ const AddMemberModal = () => {
 
   return (
     <div
-      className="row col-md-11 add-member-modal p-0 m-0"
+      className="row col-7 col-md-11 add-member-modal p-0 m-0"
       data-testid="add-member-container"
     >
       <div className="d-flex justify-content-center p-0 m-0">
-        <div className="col-md-11 pl-1 pt-4">
+        <div className="col-md-11 col-7 pl-1 pt-4">
           <h5>Add Members</h5>
           <Form className="col-md-11" onSubmit={handleSubmit} ref={form}>
             <div className="form-group">
@@ -149,6 +149,7 @@ const AddMemberModal = () => {
               <Select
                 name="company-select"
                 id="companies-select"
+                className="form-control"
                 onChange={onChangeCompany}
               >
                 <option value="">--Please choose a company--</option>
@@ -191,7 +192,7 @@ const AddMemberModal = () => {
             <div className="d-flex justify-content-end pt-1">
               <div>
                 <button
-                  className="modal-btn cancel-btn"
+                  className="modal-btn cancel-btn my-0 my-3"
                   disabled={loading}
                   type="button"
                   data-testid="cancel-btn"

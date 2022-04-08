@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
 *,
 *::before,
 *::after {
@@ -15,6 +16,7 @@
 
 body {
   font-family: 'Alfa Slab One', cursive;
+  width: 100%;
 }
 
 .main {
@@ -109,17 +111,13 @@ td {
 }
 
 .add-member-modal {
+  top: 3%;
   background: rgb(255, 255, 255);
-  /* border: #5357b6 1px solid; */
   position: fixed;
-  /* min-height: fit-content; */
-  height: 30.75em;
-  /* width: 40%; */
-  min-width: fit-content;
+  height: 35.75em;
   right: 5%;
   left: 5%;
   bottom: 10%;
-  /* padding: 3%; */
 }
 
 .add-member {
@@ -132,4 +130,15 @@ textarea {
   border: solid 1px rgb(225, 222, 222);
   width: 100%;
   padding-left: 2%;
+}
+
+@media (max-width: 500px) {
+  .main {
+    min-width: 500px;
+    height: 1000px;
+  }
+
+  .add-member-modal {
+    min-width: 450px;
+  }
 }
