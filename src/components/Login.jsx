@@ -100,8 +100,8 @@ const Login = () => {
   }
 
   return (
-    <div className="row justify-content-center" data-testid="login-container">
-      <div className="col-md-3 card card-container">
+    <div className="row  justify-content-center " data-testid="login-container">
+      <div className=" col-md-3 card card-container">
         <img src={soccerIcon} alt="soccer-icon" className={styles.soccerIcon} />
 
         <Form onSubmit={handleLogin} ref={form}>
@@ -131,7 +131,7 @@ const Login = () => {
 
           <div className="form-group">
             <button
-              className="btn btn-primary btn-block"
+              className="btn btn-primary btn-block my-5"
               disabled={loading}
               type="submit"
               data-testid="submit-btn"

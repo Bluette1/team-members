@@ -35,10 +35,16 @@ a {
   color: rgb(0, 0, 0);
 }
 
+tr {
+  display: flex;
+  align-items: center;
+}
+
 td {
   flex-basis: 260px;
   height: 60px;
   margin-right: 10px;
+  padding-top: 27px;
 }
 
 .fa.fa-trash {
@@ -136,13 +142,32 @@ textarea {
   background-color: rgb(245, 242, 242);
 }
 
-@media (max-width: 500px) {
+input.form-control {
+  width: 80% !important;
+}
+
+@media (max-width: 26.625rem) {
   .main {
-    min-width: 500px;
-    height: 1000px;
+    min-width: 20rem;
+    width: 100%;
   }
 
   .add-member-modal {
-    min-width: 450px;
+    min-width: 20rem;
+  }
+
+  tr {
+    font-size: 0.75rem;
+  }
+
+  td {
+    flex-basis: 2.5rem;
+    height: 3.75rem;
+    margin-right: 0.313rem;
+  }
+
+  .navbtn,
+  .modal-btn {
+    margin-left: 0;
   }
 }
