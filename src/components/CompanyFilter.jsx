@@ -14,17 +14,30 @@ const CompanyFilter = () => {
     document.getElementById('customDropdown').classList.toggle('show');
   };
 
-  useEffect(() => {
-    setCompanies(selected.length);
-    const checkboxes = document.getElementsByClassName('checkbox');
-    if (selected.includes('All')) {
-      const updatedSelected = [];
-      for (let i = 0; i < checkboxes.length; i += 1) {
-        checkboxes[i].checked = true;
+  const getCheckboxes = () => document.getElementsByClassName('checkbox');
+
+  const updateAllCheckboxes = (
+    checked,
+    updateSelected = false,
+    updatedSelected,
+  ) => {
+    const checkboxes = getCheckboxes();
+    for (let i = 0; i < checkboxes.length; i += 1) {
+      checkboxes[i].checked = checked;
+      if (updateSelected) {
         if (checkboxes[i].value !== 'All') {
           updatedSelected.push(checkboxes[i].value);
         }
       }
+    }
+  };
+
+  useEffect(() => {
+    setCompanies(selected.length);
+    if (selected.includes('All')) {
+      const updatedSelected = [];
+
+      updateAllCheckboxes(true, true, updatedSelected);
       setSelected(updatedSelected);
       setAll(true);
     }
@@ -39,17 +52,16 @@ const CompanyFilter = () => {
       setAll((state) => !state);
       if (value === 'All') {
         setSelected([]);
-        const checkboxes = document.getElementsByClassName('checkbox');
-        for (let i = 0; i < checkboxes.length; i += 1) {
-          checkboxes[i].checked = false;
-        }
+        updateAllCheckboxes(false);
       } else {
-        const checkboxes = document.getElementsByClassName('checkbox');
-        for (let i = 0; i < checkboxes.length; i += 1) {
-          checkboxes[i].checked = false;
-        }
-        e.target.checked = true;
-        setSelected([value]);
+        e.target.checked = false;
+        setSelected((state) => {
+          let updatedSelected = state.slice();
+          updatedSelected = updatedSelected.filter((val) => val !== value);
+          return updatedSelected;
+        });
+        const allCheckBox = document.querySelectorAll('input[value="All"]')[0];
+        allCheckBox.checked = false;
       }
       return;
     }
