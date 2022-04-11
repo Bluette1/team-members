@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
 *,
 *::before,
 *::after {
@@ -150,21 +151,26 @@ input.form-control {
     min-width: 20rem;
     width: 100%;
   }
+
   .add-member-modal {
     min-width: 20rem;
   }
+
   tr {
     font-size: 0.75rem;
   }
+
   td {
     flex-basis: 2.5rem;
     height: 3.75rem;
     margin-right: 0.313rem;
   }
+
   .navbtn,
   .modal-btn {
     margin-left: 0;
   }
+
   .login-container {
     margin-left: 10px;
   }
