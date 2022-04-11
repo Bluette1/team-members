@@ -95,7 +95,10 @@ const Register = () => {
   }
 
   return (
-    <div className="row justify-content-center" data-testid="login-container">
+    <div
+      className="row justify-content-center register-container"
+      data-testid="register-container"
+    >
       <div className="col-md-3 card card-container">
         <img src={soccerIcon} alt="soccer-icon" className="soccer-icon-card" />
 

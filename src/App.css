@@ -171,7 +171,8 @@ input.form-control {
     margin-left: 0;
   }
 
-  .login-container {
-    margin-left: 10px;
+  .login-container,
+  .register-container {
+    padding-left: 10px;
   }
 }
