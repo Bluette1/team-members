@@ -1,38 +1,178 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  border: 0 none;
+  list-style: none outside none;
+  margin: 0;
+  outline: 0 none;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: 'Alfa Slab One', cursive;
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main {
+  height: 800px;
+}
+
+nav {
+  border-bottom: solid 1px rgb(225, 222, 222);
+}
+
+.navbar-text {
+  color: #000;
+}
+
+a {
+  color: rgb(0, 0, 0);
+}
+
+tr {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+td {
+  flex-basis: 260px;
+  height: 60px;
+  margin-right: 10px;
+  padding-top: 27px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.fa.fa-trash {
+  cursor: pointer;
+}
+
+.status-select-div,
+.dropbtn {
+  height: 40px;
+  border: 1px solid rgb(225, 222, 222);
+  width: fit-content;
+}
+
+#status-select {
+  background-color: rgb(255, 255, 255) !important;
+}
+
+.status-select option,
+.current-option {
+  background-color: rgb(255, 255, 255);
+}
+
+.dropbtn {
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.down-arrow {
+  width: 8px;
+  height: 8px;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  margin-bottom: 35px;
+  padding-left: 10px;
+  min-width: 200px;
+  box-shadow: 4px 8px 16px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.show {
+  display: block;
+}
+
+.navbtn,
+.modal-btn {
+  width: 12.5rem;
+  height: 2.5rem;
+  line-height: 1.688rem;
+  text-align: center;
+  border-radius: 14.5rem;
+  background-color: rgb(12, 120, 228);
+  cursor: pointer;
+  margin-left: 20px;
+  color: rgb(255, 255, 255);
+}
+
+.cancel-btn {
+  border: 1px solid rgb(12, 120, 228);
+  background-color: rgb(255, 255, 255);
+  color: rgb(12, 120, 228);
+}
+
+.add-member-modal {
+  top: 3%;
+  background: rgb(255, 255, 255);
+  position: fixed;
+  height: 35.75em;
+  right: 5%;
+  left: 5%;
+  bottom: 10%;
+}
+
+.add-member {
+  background: rgb(0, 0, 0);
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
+
+textarea {
+  border: solid 1px rgb(225, 222, 222);
+  width: 100%;
+  padding-left: 2%;
+}
+
+.highlighted {
+  background-color: rgb(245, 242, 242);
+}
+
+input.form-control {
+  width: 80% !important;
+}
+
+@media (max-width: 26.625rem) {
+  .main {
+    min-width: 20rem;
+    width: 100%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .add-member-modal {
+    min-width: 20rem;
+  }
+
+  tr {
+    font-size: 0.75rem;
+  }
+
+  td {
+    flex-basis: 2.5rem;
+    height: 3.75rem;
+    margin-right: 0.313rem;
+  }
+
+  .navbtn,
+  .modal-btn {
+    margin-left: 0;
+  }
+
+  .login-container,
+  .register-container {
+    padding-left: 10px;
   }
 }
