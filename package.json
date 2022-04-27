@@ -37,6 +37,7 @@
     "prettier-f": "npm run prettier -- --write --no-error-on-unmatched-pattern",
     "stylelint-f": "npx stylelint **/*.{css,scss} --fix",
     "format": "npm run prettier-f && npm run eslint-f && npm run stylelint-f",
+    "pretest": "npm run format",
     "dev": "docker-compose -f docker-compose.dev.yml up",
     "prod": "docker-compose -f docker-compose.prod.yml build"
   },
