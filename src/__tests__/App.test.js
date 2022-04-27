@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  render,
-  screen,
-} from '../test_helpers/renderWithStore';
+import { render, screen } from '../test_helpers/renderWithStore';
 import '@testing-library/jest-dom/extend-expect';
 import App from '../App';
 import configureTestStore from '../test_helpers/configureStore';
@@ -22,21 +19,22 @@ test('renders the app - navbar links work correctly', async () => {
 test('renders the app - home page displays correctly', async () => {
   const accessToken = 'token';
 
-
   const user = {
     id: 1,
     email: 'test@example.com',
     created_at: '2021-07-22 14:30:15.903533000 +0000',
     updated_at: '2021-07-22 14:30:15.903533000 +0000',
     members: [],
-    accessToken
+    accessToken,
   };
 
-  const store = configureTestStore({ auth: { user, isLoggedIn: true }, member: user.members });
+  const store = configureTestStore({
+    auth: { user, isLoggedIn: true },
+    member: user.members,
+  });
   const { user: usr } = render(<App />, { store });
   expect(screen.getByText(/team members/i)).toBeInTheDocument();
   expect(screen.getByText(/logout/i)).toBeInTheDocument();
   await usr.click(screen.getByText(/add members/i));
   expect(screen.getByTestId('add-member-container')).toBeInTheDocument();
 });
-

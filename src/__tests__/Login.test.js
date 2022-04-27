@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
-import { render, waitFor, screen } from '../test_helpers/test.utils';
-import '@testing-library/jest-dom';
-import '@testing-library/jest-dom/extend-expect';
-import 'jest-localstorage-mock';
 import axios from 'axios';
+import { render, waitFor, screen } from '../test_helpers/test.utils';
+import 'jest-localstorage-mock';
 import history from '../helpers/history';
 import Login from '../components/Login';
 import configureTestStore from '../test_helpers/configureStore';
 import { httpProtocol, host, port } from '../env.variables';
-import { CLEAR_MESSAGE, LOGIN_SUCCESS, REGISTER_MEMBERS } from '../actions/types';
+import {
+  CLEAR_MESSAGE,
+  LOGIN_SUCCESS,
+  REGISTER_MEMBERS,
+} from '../actions/types';
 
-jest.mock('axios')
+jest.mock('axios');
 
 afterEach(() => {
   localStorage.clear();
@@ -26,7 +28,7 @@ test('renders the Login form and functions correctly', async () => {
     created_at: '2021-07-22 14:30:15.903533000 +0000',
     updated_at: '2021-07-22 14:30:15.903533000 +0000',
     members: [],
-    accessToken
+    accessToken,
   };
 
   const username = 'Jose Mourinho';
@@ -68,13 +70,16 @@ test('renders the Login form and functions correctly', async () => {
     const actionRegisterMembers = {
       type: REGISTER_MEMBERS,
       payload: user.members,
-    }
+    };
 
     expect(dispatchSpy).toHaveBeenCalledWith(actionloggedIn);
     expect(dispatchSpy).toHaveBeenCalledWith(actionClearMessage);
     expect(dispatchSpy).toHaveBeenCalledWith(actionRegisterMembers);
 
-    expect(history.location.pathname).toBe("/");
-    expect(localStorage.setItem).toHaveBeenCalledWith('user', JSON.stringify(user));
+    expect(history.location.pathname).toBe('/');
+    expect(localStorage.setItem).toHaveBeenCalledWith(
+      'user',
+      JSON.stringify(user),
+    );
   });
 });

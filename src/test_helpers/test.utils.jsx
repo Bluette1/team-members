@@ -7,11 +7,7 @@ import { Provider } from 'react-redux';
 
 function render(
   ui,
-  {
-    preloadedState,
-    store = configureTestStore(),
-    ...renderOptions
-  } = {},
+  { preloadedState, store = configureTestStore(), ...renderOptions } = {},
 ) {
   function Wrapper({ children }) {
     return (
