@@ -99,7 +99,7 @@ const CompanyFilter = () => {
   };
 
   return (
-    <div className="dropdown">
+    <div data-testid="company-filter" className="dropdown">
       <button type="button" onClick={handleClick} className="dropbtn">
         Company{`(${companies})`}
         <img src={downArrow} alt="down arrow" className="down-arrow" />

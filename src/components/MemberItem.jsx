@@ -49,7 +49,10 @@ const MemberItem = ({ item, highlight }) => {
   };
 
   return (
-    <tr className={(cx('d-flex'), highlight && 'highlighted')}>
+    <tr
+      data-testid="member-item"
+      className={(cx('d-flex'), highlight ? 'highlighted' : undefined)}
+    >
       <td>
         <input
           className="mx-2"
