@@ -71,6 +71,7 @@ const MemberItem = ({ item, highlight }) => {
           onClick={handleRemove}
           className="fa fa-trash mx-2"
           aria-hidden="true"
+          data-testid="remove"
         />
       </td>
     </tr>
