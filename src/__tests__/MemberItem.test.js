@@ -9,7 +9,9 @@ import { httpProtocol, host, port } from '../env.variables';
 
 jest.mock('axios');
 test('renders the member item component correctly', async () => {
+  const id = 'id';
   const member = {
+    id,
     name: 'Wayne Rooney',
     company: 'DC United',
     status: 'Active',
@@ -17,7 +19,7 @@ test('renders the member item component correctly', async () => {
     createdAt: '2021-07-22 14:30:15.903533000 +0000',
     updatedAt: '2021-07-22 14:30:15.903533000 +0000',
   };
-  const id = 'id';
+
   const user = {
     id,
     username: 'Jose Mourinho',
@@ -29,10 +31,10 @@ test('renders the member item component correctly', async () => {
   };
   axios.delete.mockImplementation((url) => {
     switch (url) {
-      case `${httpProtocol}://${host}:${port}/members/${id}`:
+      case `${httpProtocol}://${host}:${port}/api/members/${id}`:
         return Promise.resolve();
       default:
-        return Promise.resolve({ data: {} });
+        return Promise.reject(new Error('An error occurred!'));
     }
   });
 

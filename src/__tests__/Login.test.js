@@ -41,7 +41,7 @@ test('renders the Login form and functions correctly', async () => {
           data: user,
         });
       default:
-        return Promise.resolve({ data: {} });
+        return Promise.reject(new Error('An error occurred!'));
     }
   });
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen } from '../test_helpers/renderWithStore';
-import '@testing-library/jest-dom/extend-expect';
 import Home from '../containers/Home';
 import configureTestStore from '../test_helpers/configureStore';
 

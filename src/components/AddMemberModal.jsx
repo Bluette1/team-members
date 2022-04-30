@@ -179,6 +179,7 @@ const AddMemberModal = () => {
             <div className="form-group">
               <p>Notes</p>
               <textarea
+                data-testid="notes"
                 id="notes"
                 name="notes"
                 rows="4"
