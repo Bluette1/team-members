@@ -25,6 +25,7 @@ const StatusSort = () => {
     >
       <label htmlFor="status-select">
         <select
+          data-testid="select"
           className="m-2"
           name="status"
           id="status-select"
@@ -33,9 +34,15 @@ const StatusSort = () => {
           <option className="current-option" value={'' || status}>
             {status || 'Status'}
           </option>
-          <option value="">Unsorted</option>
+          <option data-testid="select-option" value="">
+            Unsorted
+          </option>
           {statuses.map((item) => (
-            <option key={`status-${uuid()}`} value={item}>
+            <option
+              data-testid="select-option"
+              key={`status-${uuid()}`}
+              value={item}
+            >
               {item}
             </option>
           ))}
