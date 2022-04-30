@@ -1,5 +1,5 @@
 import React from 'react';
-import { render as rtlRender, screen } from '@testing-library/react';
+import { render as rtlRender, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import configureTestStore from './configureStore';
 import { Provider } from 'react-redux';
@@ -16,4 +16,4 @@ function render(
     render: rtlRender(ui, { wrapper: Wrapper, ...renderOptions }),
   };
 }
-export { render, screen };
+export { render, screen, fireEvent };
