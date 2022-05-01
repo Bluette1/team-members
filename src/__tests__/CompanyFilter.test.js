@@ -5,6 +5,11 @@ import CompanyFilter from '../components/CompanyFilter';
 import configureTestStore from '../test_helpers/configureStore';
 import { CHANGE_FILTER } from '../actions/types';
 
+beforeEach(() => {
+  localStorage.clear();
+  jest.clearAllMocks();
+});
+
 test('renders the Company Filter component and select `All` functions correctly', async () => {
   const id = 'id';
   const user = {

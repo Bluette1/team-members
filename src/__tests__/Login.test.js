@@ -17,7 +17,7 @@ import {
 
 jest.mock('axios');
 
-afterEach(() => {
+beforeEach(() => {
   localStorage.clear();
   jest.clearAllMocks();
 });

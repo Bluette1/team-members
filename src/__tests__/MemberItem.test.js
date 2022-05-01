@@ -8,6 +8,11 @@ import { REMOVE_MEMBER, SET_MESSAGE } from '../actions/types';
 import { httpProtocol, host, port } from '../env.variables';
 
 jest.mock('axios');
+
+beforeEach(() => {
+  localStorage.clear();
+  jest.clearAllMocks();
+});
 test('renders the member item component correctly: success scenario', async () => {
   const id = 'id';
   const member = {

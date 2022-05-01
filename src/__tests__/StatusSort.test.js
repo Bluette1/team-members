@@ -4,6 +4,11 @@ import StatusSort from '../components/StatusSort';
 import configureTestStore from '../test_helpers/configureStore';
 import { CHANGE_SORT_ORDER } from '../actions/types';
 
+beforeEach(() => {
+  localStorage.clear();
+  jest.clearAllMocks();
+});
+
 test('renders the status sort component and it functions correctly', async () => {
   const id = 'id';
   const user = {

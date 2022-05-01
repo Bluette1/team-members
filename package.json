@@ -30,7 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --silent --watchAll=false",
+    "test": "react-scripts test --silent --watchAll=false --ci",
     "eject": "react-scripts eject",
     "eslint-f": "npx eslint . --fix",
     "prettier": "npx prettier src test --check",

@@ -5,6 +5,12 @@ import history from '../helpers/history';
 import configureTestStore from '../test_helpers/configureStore';
 
 jest.mock('axios');
+
+beforeEach(() => {
+  localStorage.clear();
+  jest.clearAllMocks();
+});
+
 test('renders the app - navbar links work correctly', async () => {
   const { user } = render(<App />);
   expect(screen.getByText(/team members/i)).toBeInTheDocument();

@@ -4,6 +4,12 @@ import Home from '../containers/Home';
 import configureTestStore from '../test_helpers/configureStore';
 
 jest.mock('axios');
+
+beforeEach(() => {
+  localStorage.clear();
+  jest.clearAllMocks();
+});
+
 test('renders the home component correctly', async () => {
   const members = [
     {

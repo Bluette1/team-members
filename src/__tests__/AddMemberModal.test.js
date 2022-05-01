@@ -12,6 +12,11 @@ import {
 import { httpProtocol, host, port } from '../env.variables';
 
 jest.mock('axios');
+
+beforeEach(() => {
+  localStorage.clear();
+  jest.clearAllMocks();
+});
 test('renders the Add Member component and it functions correctly: success scenario', async () => {
   const id = 'id';
   const user = {
