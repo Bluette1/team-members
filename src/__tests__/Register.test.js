@@ -4,7 +4,7 @@ import axios from 'axios';
 import { render, waitFor, screen } from '../test_helpers/test.utils';
 import 'jest-localstorage-mock';
 import history from '../helpers/history';
-import Login from '../components/Register';
+import Register from '../components/Register';
 import configureTestStore from '../test_helpers/configureStore';
 import { httpProtocol, host, port } from '../env.variables';
 import {
@@ -48,7 +48,7 @@ test('renders the Register form and it functions correctly: success scenario', a
     }
   });
 
-  const { user: usr } = render(<Login />, { store });
+  const { user: usr } = render(<Register />, { store });
   const registerContainer = screen.getByTestId('register-container');
   const input = registerContainer.querySelectorAll('.form-control');
   expect(screen).toMatchSnapshot();
@@ -118,7 +118,7 @@ test('renders the Register form and it functions correctly: error scenario', asy
     }
   });
 
-  const { user: usr } = render(<Login />, { store });
+  const { user: usr } = render(<Register />, { store });
   const registerContainer = screen.getByTestId('register-container');
   const input = registerContainer.querySelectorAll('.form-control');
   expect(screen).toMatchSnapshot();
