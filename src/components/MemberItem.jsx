@@ -49,7 +49,10 @@ const MemberItem = ({ item, highlight }) => {
   };
 
   return (
-    <tr className={(cx('d-flex'), highlight && 'highlighted')}>
+    <tr
+      data-testid="member-item"
+      className={(cx('d-flex'), highlight ? 'highlighted' : undefined)}
+    >
       <td>
         <input
           className="mx-2"
@@ -68,6 +71,7 @@ const MemberItem = ({ item, highlight }) => {
           onClick={handleRemove}
           className="fa fa-trash mx-2"
           aria-hidden="true"
+          data-testid="remove"
         />
       </td>
     </tr>

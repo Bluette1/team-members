@@ -1,23 +1,26 @@
-import http from '../http-common';
+import axios from 'axios';
 import authHeader from './auth.header';
+import { httpProtocol, host, port } from '../env.variables';
+
+const baseURL = `${httpProtocol}://${host}:${port}/api`;
 
 const createMember = (data, headers = authHeader()) =>
-  http.post('/members', data, { headers });
+  axios.post(`${baseURL}/members`, data, { headers });
 
 const getMembers = (headers = authHeader()) =>
-  http.get('/members', { headers });
+  axios.get(`${baseURL}/members`, { headers });
 
 const getMembersByUser = (id, headers = authHeader()) =>
-  http.get(`/users/${id}/members`, { headers });
+  axios.get(`${baseURL}/users/${id}/members`, { headers });
 
 const getMember = (id, headers = authHeader()) =>
-  http.post(`/members/${id}`, { headers });
+  axios.post(`${baseURL}/members/${id}`, { headers });
 
 const updateMember = (id, data, headers = authHeader()) =>
-  http.put(`/members/${id}`, data, { headers });
+  axios.put(`${baseURL}/members/${id}`, data, { headers });
 
 const deleteMember = (id, headers = authHeader()) =>
-  http.delete(`/members/${id}`, { headers });
+  axios.delete(`${baseURL}/members/${id}`, { headers });
 
 export default {
   createMember,

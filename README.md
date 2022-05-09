@@ -1,6 +1,6 @@
 # team-members
 
-A simple application built using React.js and Redux.
+An application built using React.js and Redux for managing members of different teams.
 
 ## Table of contents
 

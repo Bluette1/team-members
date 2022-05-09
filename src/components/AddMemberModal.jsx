@@ -10,7 +10,6 @@ import MemberService from '../services/member.service';
 import { addMember } from '../actions/member';
 import showMemberModal from '../actions/membermodal';
 import authHeader from '../services/auth.header';
-
 import { setMessage } from '../actions/message';
 
 const required = (value) => {
@@ -180,6 +179,7 @@ const AddMemberModal = () => {
             <div className="form-group">
               <p>Notes</p>
               <textarea
+                data-testid="notes"
                 id="notes"
                 name="notes"
                 rows="4"
@@ -216,7 +216,6 @@ const AddMemberModal = () => {
                 </button>
               </div>
             </div>
-
             {message && (
               <div className="form-group">
                 <div className="alert alert-danger" role="alert">

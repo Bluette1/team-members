@@ -30,7 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false --ci",
     "eject": "react-scripts eject",
     "eslint-f": "npx eslint . --fix",
     "prettier": "npx prettier src test --check",
@@ -49,6 +49,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "4.x",
+    "jest-localstorage-mock": "^2.4.21",
     "prettier": "^2.6.2",
     "stylelint": "13.x",
     "stylelint-config-standard": "21.x",

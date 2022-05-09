@@ -1,7 +1,10 @@
-import http from '../http-common';
+import axios from 'axios';
+import { httpProtocol, host, port } from '../env.variables';
 
-const register = (data) => http.post('/auth/signup', data);
+const baseURL = `${httpProtocol}://${host}:${port}/api`;
 
-const login = (data) => http.post('/auth/signin', data);
+const register = (data) => axios.post(`${baseURL}/auth/signup`, data);
+
+const login = (data) => axios.post(`${baseURL}/auth/signin`, data);
 
 export default { register, login };

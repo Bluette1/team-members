@@ -60,8 +60,8 @@ const Home = () => {
   }, [members]);
 
   if (errDisplay !== '') {
-    console.log(errDisplay);
-    return null;
+    // console.log(errDisplay);
+    return <p>{errDisplay}</p>;
   }
 
   return (
