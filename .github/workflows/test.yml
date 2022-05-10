@@ -3,7 +3,7 @@
 
 name: Test with jest
 
-on: pull_request
+on: [push]
 
 jobs:
   build:
