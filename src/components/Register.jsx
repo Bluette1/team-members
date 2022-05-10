@@ -90,10 +90,6 @@ const Register = () => {
     }
   };
 
-  if (isLoggedIn) {
-    return <Navigate to="/" />;
-  }
-
   return (
     <div
       className="row justify-content-center register-container"

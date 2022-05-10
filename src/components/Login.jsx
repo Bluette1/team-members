@@ -95,10 +95,6 @@ const Login = () => {
     }
   };
 
-  if (isLoggedIn) {
-    return <Navigate to="/" />;
-  }
-
   return (
     <div
       className="row justify-content-center login-container"
